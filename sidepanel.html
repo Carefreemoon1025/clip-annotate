@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>文摘</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <div class="header">
+      <h1 class="logo">📖 文摘</h1>
+      <div class="header-actions">
+        <div class="theme-selector">
+          <button class="icon-btn" id="btnTheme" title="切换主题">☀️</button>
+          <div class="theme-dropdown hidden" id="themeDropdown">
+            <div class="theme-option" data-theme="">☀️ 默认</div>
+            <div class="theme-option" data-theme="eye-care">🌙 护眼</div>
+            <div class="theme-option" data-theme="dark">🌑 黑暗</div>
+          </div>
+        </div>
+        <div class="theme-selector">
+          <button class="icon-btn" id="btnFontColor" title="字体颜色">🎨</button>
+          <div class="theme-dropdown font-color-dropdown hidden" id="fontColorDropdown"></div>
+        </div>
+        <button class="icon-btn" id="btnExport" title="导出">📥</button>
+        <button class="icon-btn" id="btnSettings" title="设置">⚙️</button>
+      </div>
+    </div>
+
+    <!-- Search bar -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="🔍 搜索抄录..." />
+    </div>
+
+    <!-- Clippings list -->
+    <div id="clippingsList" class="clippings-list"></div>
+
+    <!-- Empty state -->
+    <div id="emptyState" class="empty-state">
+      <div class="empty-icon">📝</div>
+      <p>还没有抄录内容</p>
+      <p class="empty-hint">在网页中选中文字，右键点击「抄录选中文字」或按 <kbd>Alt+C</kbd></p>
+    </div>
+
+    <!-- Settings panel -->
+    <div id="settingsPanel" class="settings-panel hidden">
+      <h2>设置</h2>
+      <div class="form-group">
+        <label for="apiKeyInput">API Key</label>
+        <input type="password" id="apiKeyInput" placeholder="sk-..." />
+      </div>
+      <div class="form-group">
+        <label for="apiEndpointInput">API 地址</label>
+        <input type="text" id="apiEndpointInput" placeholder="https://api.deepseek.com" />
+      </div>
+      <div class="form-group">
+        <label for="apiModelInput">模型名称</label>
+        <input type="text" id="apiModelInput" placeholder="deepseek-v4-flash" />
+      </div>
+      <button class="btn" id="btnSaveConfig">保存设置</button>
+      <button class="btn btn-secondary" id="btnBackFromSettings">← 返回</button>
+      <p id="configStatus" class="config-status"></p>
+    </div>
+
+    <!-- Export panel -->
+    <div id="exportPanel" class="settings-panel hidden">
+      <h2>导出</h2>
+      <button class="btn" id="btnExportJson">导出 JSON</button>
+      <button class="btn" id="btnExportMarkdown">导出 Markdown</button>
+      <button class="btn btn-secondary" id="btnBackFromExport">← 返回</button>
+    </div>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

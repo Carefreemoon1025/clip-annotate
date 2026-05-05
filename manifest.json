@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "文摘 - 网页划线抄录",
+  "version": "1.0.0",
+  "description": "快速抄录网页文字并添加批注，长文本自动 AI 总结",
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "sidePanel",
+    "clipboardWrite"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "commands": {
+    "capture-selection": {
+      "suggested_key": {
+        "default": "Alt+C",
+        "mac": "MacCtrl+C"
+      },
+      "description": "抄录选中的文字"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
